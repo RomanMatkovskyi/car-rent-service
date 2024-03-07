@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCars } from './operations';
 
 const carsSlice = createSlice({
-  name: "cars",
+  name: 'cars',
   initialState: {
+    data: [],
     favorite: [],
   },
   reducers: {
@@ -13,6 +15,14 @@ const carsSlice = createSlice({
       const index = state.findIndex((car) => car === action.payload);
       state.splice(index, 1);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCars.pending, (state, action) => {})
+      .addCase(fetchCars.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(fetchCars.rejected, (state, action) => {});
   },
 });
 

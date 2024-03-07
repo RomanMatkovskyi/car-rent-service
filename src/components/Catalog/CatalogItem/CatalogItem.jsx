@@ -9,32 +9,36 @@ import {
   CarDescriptionLi,
   CarDescriptionItem,
   LearnMoreBtn,
-} from "./CatalogItem.styled";
-import { useDispatch } from "react-redux";
-import { addFavorite } from "../../../redux/slice";
+} from './CatalogItem.styled';
+import noCarFoto from '../../../assets/no_photo.png';
 
-const CatalogItem = ({
-  id,
-  img,
-  year,
-  address,
-  make,
-  model,
-  functionalities,
-  rentalPrice,
-  rentalCompany,
-  type,
-}) => {
-  const dispatch = useDispatch();
-  const addresArray = address.split(",");
+const CatalogItem = ({ data }) => {
+  const {
+    id,
+    img,
+    year,
+    address,
+    make,
+    model,
+    functionalities,
+    rentalPrice,
+    rentalCompany,
+    type,
+  } = data;
+  const addresArray = address.split(',');
   return (
     <>
       <CarItemWrapper>
-        <CarImg src={img} alt="car example" width={274} height={280} />
+        <CarImg
+          src={img ? img : noCarFoto}
+          alt="car example"
+          width={274}
+          height={280}
+        />
         <div>
           <CarTitleWrapper>
             <CarTitle>
-              {make} <CarTitleModel>{`${model ? model : ""},`}</CarTitleModel>{" "}
+              {make} <CarTitleModel>{`${model ? model : ''},`}</CarTitleModel>{' '}
               <span>{year}</span>
             </CarTitle>
             <CarTitlePrice>{rentalPrice}</CarTitlePrice>
@@ -58,9 +62,9 @@ const CatalogItem = ({
             <CarDescriptionLi>
               <CarDescriptionItem>{id}</CarDescriptionItem>
             </CarDescriptionLi>
-            <CarDescriptionLi>
+            {/* <CarDescriptionLi>
               <CarDescriptionItem>{functionalities[0]}</CarDescriptionItem>
-            </CarDescriptionLi>
+            </CarDescriptionLi> */}
           </CarDescription>
           <LearnMoreBtn type="button">Learn more</LearnMoreBtn>
         </div>

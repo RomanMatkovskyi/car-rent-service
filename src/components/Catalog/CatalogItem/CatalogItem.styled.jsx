@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CarItemWrapper = styled.li`
   width: 274px;
@@ -20,6 +20,9 @@ export const CarTitle = styled.h2`
   line-height: 150%;
   color: #121417;
   margin-bottom: 8px;
+  width: 181px; // CHANGE WIDTH HERE
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const CarTitleModel = styled.span`
@@ -45,7 +48,7 @@ export const CarDescriptionLi = styled.li`
   align-items: center;
   &:not(:first-child) {
     &::before {
-      content: "";
+      content: '';
       width: 1px;
       height: 16px;
       margin-right: 6px;
@@ -63,13 +66,13 @@ export const CarDescriptionItem = styled.p`
 
 export const LearnMoreBtn = styled.button`
   border-radius: 12px;
-  padding: 12px 99px;
+  padding: 12px 98px;
   width: 274px;
   height: 44px;
   background-color: #3470ff;
   border: none;
   text-align: center;
-  font-family: inherit;
+  font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 143%;

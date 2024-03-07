@@ -2,14 +2,21 @@ import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import FirstPage from 'pages/FirstPage/FirstPage';
 import SecondPage from 'pages/SecondPage/SecondPage';
-import HalfPage from 'pages/HalfPage/HalfPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
+import { fetchCars } from './redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-  console.log(test);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCars());
+  }, []);
+
   return (
     <AppWrapper>
       <Routes>
