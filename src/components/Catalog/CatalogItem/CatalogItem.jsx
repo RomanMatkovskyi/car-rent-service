@@ -11,6 +11,8 @@ import {
   LearnMoreBtn,
 } from './CatalogItem.styled';
 import noCarFoto from '../../../assets/no_photo.png';
+import PopUp from '../PopUp/PopUp';
+import { useState } from 'react';
 
 const CatalogItem = ({ data }) => {
   const {
@@ -26,6 +28,8 @@ const CatalogItem = ({ data }) => {
     type,
   } = data;
   const addresArray = address.split(',');
+  const [PopUpOpen, setPopUpOpen] = useState(false);
+
   return (
     <>
       <CarItemWrapper>
@@ -66,9 +70,19 @@ const CatalogItem = ({ data }) => {
               <CarDescriptionItem>{functionalities[0]}</CarDescriptionItem>
             </CarDescriptionLi> */}
           </CarDescription>
-          <LearnMoreBtn type="button">Learn more</LearnMoreBtn>
+          <LearnMoreBtn
+            type="button"
+            onClick={() => {
+              setPopUpOpen(true);
+            }}
+          >
+            Learn more
+          </LearnMoreBtn>
         </div>
       </CarItemWrapper>
+      {PopUpOpen && (
+        <PopUp data={data} PopUpOpen={PopUpOpen} setPopUpOpen={setPopUpOpen} />
+      )}
     </>
   );
 };
