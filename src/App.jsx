@@ -14,10 +14,8 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
+          <Route path="/catalog" element={<FirstPage />} />
+          <Route path="/favorites" element={<SecondPage />}></Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
