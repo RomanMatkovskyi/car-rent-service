@@ -36,6 +36,8 @@ button {
 }
 
 .container {
+  padding-left: 20px;
+  padding-right: 20px;
   max-width: 1440px;
   margin: 0 auto;
 }

@@ -13,6 +13,7 @@ export const Modal = styled.dialog`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
   border: none;
   padding: 40px;
   border-radius: 24px;

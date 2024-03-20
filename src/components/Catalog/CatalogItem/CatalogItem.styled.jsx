@@ -2,6 +2,22 @@ import styled from 'styled-components';
 
 export const CarItemWrapper = styled.li`
   width: 274px;
+  height: 426px;
+`;
+
+export const FavoriteBtn = styled.button`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  top: 16px;
+  right: 15px;
+`;
+
+export const CarImgWrapper = styled.div`
+  position: relative;
 `;
 
 export const CarImg = styled.img`
@@ -12,6 +28,7 @@ export const CarImg = styled.img`
 export const CarTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 `;
 
 export const CarTitle = styled.h2`
@@ -20,7 +37,7 @@ export const CarTitle = styled.h2`
   line-height: 150%;
   color: #121417;
   margin-bottom: 8px;
-  width: 181px; // CHANGE WIDTH HERE
+  width: 190px; // CHANGE WIDTH HERE
   overflow: hidden;
   white-space: nowrap;
 `;
@@ -51,7 +68,7 @@ export const CarDescriptionLi = styled.li`
       content: '';
       width: 1px;
       height: 16px;
-      margin-right: 6px;
+      margin-right: 10px;
       background-color: rgba(18, 20, 23, 0.1);
     }
   }
@@ -82,4 +99,16 @@ export const LearnMoreBtn = styled.button`
   &:hover {
     background-color: #0b44cd;
   }
+`;
+
+export const PopUpWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 2;
+  background-color: #12141764;
 `;

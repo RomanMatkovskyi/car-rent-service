@@ -1,5 +1,7 @@
 import {
   CarItemWrapper,
+  FavoriteBtn,
+  CarImgWrapper,
   CarImg,
   CarTitleWrapper,
   CarTitle,
@@ -9,7 +11,9 @@ import {
   CarDescriptionLi,
   CarDescriptionItem,
   LearnMoreBtn,
+  PopUpWrapper,
 } from './CatalogItem.styled';
+import sprite from '../../../assets/symbol-defs.svg';
 import noCarFoto from '../../../assets/no_photo.png';
 import PopUp from '../PopUp/PopUp';
 import { useState } from 'react';
@@ -22,23 +26,36 @@ const CatalogItem = ({ data }) => {
     address,
     make,
     model,
-    functionalities,
     rentalPrice,
     rentalCompany,
     type,
   } = data;
-  const addresArray = address.split(',');
+  const addresArray = address && address.split(',');
   const [PopUpOpen, setPopUpOpen] = useState(false);
+
+  const BackdropClose = (event) => {
+    const container = event.target.closest('[name="drop"]');
+    if (container) {
+      setPopUpOpen(false);
+    }
+  };
 
   return (
     <>
       <CarItemWrapper>
-        <CarImg
-          src={img ? img : noCarFoto}
-          alt="car example"
-          width={274}
-          height={280}
-        />
+        <CarImgWrapper>
+          <FavoriteBtn>
+            <svg width="16" height="16">
+              <use xlinkHref={`${sprite}#icon-normal`}></use>
+            </svg>
+          </FavoriteBtn>
+          <CarImg
+            src={img ? img : noCarFoto}
+            alt="car example"
+            width={274}
+            height={280}
+          />
+        </CarImgWrapper>
         <div>
           <CarTitleWrapper>
             <CarTitle>
@@ -81,7 +98,14 @@ const CatalogItem = ({ data }) => {
         </div>
       </CarItemWrapper>
       {PopUpOpen && (
-        <PopUp data={data} PopUpOpen={PopUpOpen} setPopUpOpen={setPopUpOpen} />
+        <>
+          <PopUpWrapper name="drop" onClick={BackdropClose}></PopUpWrapper>
+          <PopUp
+            data={data}
+            PopUpOpen={PopUpOpen}
+            setPopUpOpen={setPopUpOpen}
+          />
+        </>
       )}
     </>
   );

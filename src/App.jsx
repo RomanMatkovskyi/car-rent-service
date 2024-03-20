@@ -1,27 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import FirstPage from 'pages/FirstPage/FirstPage';
+import CatalogPage from './pages/CatalogPage/CatalogPage';
 import SecondPage from 'pages/SecondPage/SecondPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
-import { fetchCars } from './redux/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
-const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCars());
-  }, []);
-
   return (
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/catalog" element={<FirstPage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/favorites" element={<SecondPage />}></Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
